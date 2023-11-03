@@ -10,6 +10,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 
 
+//////automapper/////
+builder.Services.AddAutoMapper(typeof(Program));
+////////////
+
 ///////////////
 var app = builder.Build();
 
