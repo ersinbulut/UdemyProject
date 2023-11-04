@@ -1,3 +1,5 @@
+using HotelProject.DataAccessLayer.Concrete;
+using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -8,6 +10,8 @@ builder.Services.AddControllersWithViews();
 
 ///////////////
 builder.Services.AddHttpClient();
+builder.Services.AddDbContext<Context>();
+builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
 
 
 //////automapper/////
