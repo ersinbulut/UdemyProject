@@ -1,0 +1,52 @@
+﻿@model List<ResultBookingDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+    <div class="mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h1 class="mdl-card__title-text">Rezervasyonlar</h1>
+        </div>
+        <div class="mdl-card__supporting-text no-padding">
+            <table class="mdl-data-table mdl-js-data-table">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">#</th>
+                        <th class="mdl-data-table__cell--non-numeric">Misafir</th>
+                        <th class="mdl-data-table__cell--non-numeric">Giriş Tarihi</th>
+                        <th class="mdl-data-table__cell--non-numeric">Çıkış Tarihi</th>
+                        <th class="mdl-data-table__cell--non-numeric">Durum</th>
+                        <th class="mdl-data-table__cell--non-numeric">Onayla</th>
+                        <th class="mdl-data-table__cell--non-numeric">İptal Et</th>
+                        <th class="mdl-data-table__cell--non-numeric">Beklet</th>
+                        <th class="mdl-data-table__cell--non-numeric">Güncelle</th>
+                        <th class="mdl-data-table__cell--non-numeric">Detaylar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">@count</td>
+                            <td class="mdl-data-table__cell--non-numeric">@item.Name</td>
+                            <td class="mdl-data-table__cell--non-numeric">@item.Checkin</td>
+                            <td class="mdl-data-table__cell--non-numeric">@item.CheckOut</td>
+                            <td class="mdl-data-table__cell--non-numeric"><span class="label label--mini background-color--primary">@item.Status</span> </td>
+                            <td><a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-light-blue">Onayla</a></td>
+                            <td><a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-red">İptal Et</a></td>
+                            <td><a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-orange">Beklet</a></td>
+                            <td><a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-green">Güncelle</a></td>
+                            <td><a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-purple">Detaylar</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
