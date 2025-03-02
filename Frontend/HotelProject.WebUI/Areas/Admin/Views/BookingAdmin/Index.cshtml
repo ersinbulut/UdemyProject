@@ -34,10 +34,10 @@
                         <tr>
                             <td class="mdl-data-table__cell--non-numeric">@count</td>
                             <td class="mdl-data-table__cell--non-numeric">@item.Name</td>
-                            <td class="mdl-data-table__cell--non-numeric">@item.Checkin</td>
-                            <td class="mdl-data-table__cell--non-numeric">@item.CheckOut</td>
+                            <td class="mdl-data-table__cell--non-numeric">@(((DateTime)item.Checkin).ToString("dd-MMM-yyyy"))</td>
+                            <td class="mdl-data-table__cell--non-numeric">@(((DateTime)item.CheckOut).ToString("dd-MMM-yyyy"))</td>
                             <td class="mdl-data-table__cell--non-numeric"><span class="label label--mini background-color--primary">@item.Status</span> </td>
-                            <td><a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-light-blue">Onayla</a></td>
+                            <td><a href="/Admin/BookingAdmin/ApprovedReservation/@item.BookingID" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-light-blue">Onayla</a></td>
                             <td><a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-red">İptal Et</a></td>
                             <td><a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-orange">Beklet</a></td>
                             <td><a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-green">Güncelle</a></td>
