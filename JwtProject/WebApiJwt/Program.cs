@@ -6,18 +6,21 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 //jwt konfigurasyonu
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
-{
-    opt.RequireHttpsMetadata = false;
-    opt.TokenValidationParameters = new TokenValidationParameters()
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opt =>
     {
-        ValidIssuer = "http://localhost",
-        ValidAudience = "http://localhost",
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("aspnetcoreapiapi")),
-        ValidateIssuerSigningKey = true,
-        ValidateLifetime= true,
-    };
-});
+        opt.RequireHttpsMetadata = true; // Prodüksiyon ortamý için true yapýlabilir
+        opt.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidIssuer = "https://localhost", // Protokolü belirtmek önemli
+            ValidAudience = "https://localhost", // Protokolü belirtmek önemli
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("aspnetcoreapiapilongkey1234567890")), // Güvenlik için bu anahtar dinamik olarak saklanabilir
+            ValidateIssuerSigningKey = true,
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero // Token süresi geçtikten sonra hemen hata vermek için, opsiyonel
+        };
+    });
+
 
 
 builder.Services.AddControllers();
@@ -35,6 +38,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 
