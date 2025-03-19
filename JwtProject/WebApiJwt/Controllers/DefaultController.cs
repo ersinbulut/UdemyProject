@@ -14,11 +14,23 @@ namespace WebApiJwt.Controllers
         {
             return Ok(new CreateToken().TokenCreate());
         }
+        [HttpGet("[action]")]
+        public IActionResult TestAdmin()
+        {
+            return Ok(new CreateToken().TokenCreate());
+        }
         [Authorize]
         [HttpGet("[action]")]
         public IActionResult Test2()
         {
             return Ok("hosgeldiniz");
+        }
+
+        [Authorize(Roles="Admin,Visitor")]
+        [HttpGet("[action]")]
+        public IActionResult Test3()
+        {
+            return Ok("Token baaşrılı bir şekilde giriş yaptı");
         }
     }
 }
