@@ -1,0 +1,69 @@
+﻿@model UpdateRoomDto
+
+@{
+    ViewData["Title"] = "UpdateRoom";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="mdl-card mdl-shadow--2dp employer-form">
+    <div class="mdl-card__title">
+        <h2>Oda Güncelleme Formu</h2>
+        <div class="mdl-card__subtitle">Lütfen formu doldurun</div>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+        <form method="post" class="form">
+            <input type="hidden" asp-for="RoomID" />
+            <div class="form__article">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="RoomNumber">
+                        <label class="mdl-textfield__label" for="firstName">Oda Numarası</label>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="Title">
+                        <label class="mdl-textfield__label" for="secondName">Oda Başlığı</label>
+                    </div>
+                </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="Price">
+                        <label class="mdl-textfield__label" for="firstName">Fiyat</label>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="BedCount">
+                        <label class="mdl-textfield__label" for="secondName">Yatak Odası Sayısı</label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="BathCount">
+                        <label class="mdl-textfield__label" for="secondName">Banyo Sayısı</label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="RoomCoverImage">
+                        <label class="mdl-textfield__label" for="secondName">Oda Kapak Fotoğrafı</label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="Wifi">
+                        <label class="mdl-textfield__label" for="secondName">Wifi</label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="Description">
+                        <label class="mdl-textfield__label" for="secondName">Açıklama</label>
+                    </div>
+                </div>
+
+                <div class="form__action" style="float:right;">
+                    <button type="submit" id="submit_button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-upgraded=",MaterialButton">
+                        Güncelle
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

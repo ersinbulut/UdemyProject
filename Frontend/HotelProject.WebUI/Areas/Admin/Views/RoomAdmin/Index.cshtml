@@ -1,0 +1,46 @@
+﻿@model List<ResultRoomDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+
+<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+    <div class="mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h1 class="mdl-card__title-text">Odalar Tablosu</h1>
+        </div>
+        <div class="mdl-card__supporting-text no-padding">
+            <table class="mdl-data-table mdl-js-data-table" data-upgraded=",MaterialDataTable">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">#</th>
+                        <th class="mdl-data-table__cell--non-numeric">Oda Numarası</th>
+                        <th class="mdl-data-table__cell--non-numeric">Başlık</th>
+                        <th class="mdl-data-table__cell--non-numeric">Sil</th>
+                        <th class="mdl-data-table__cell--non-numeric">Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric">@count</th>
+                            <td class="mdl-data-table__cell--non-numeric">@item.RoomNumber</td>
+                            <td class="mdl-data-table__cell--non-numeric">@item.Title</td>
+                            <td class="mdl-data-table__cell--non-numeric"><a href="/Admin/RoomAdmin/DeleteRoom/@item.RoomID" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-red">Sil</a></td>
+                            <td class="mdl-data-table__cell--non-numeric"><a href="/Admin/RoomAdmin/UpdateRoom/@item.RoomID" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-green">Güncelle</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a href="/Admin/RoomAdmin/AddRoom/" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-purple">Yeni Oda Girişi</a>
+        </div>
+    </div>
+</div>
+
+
