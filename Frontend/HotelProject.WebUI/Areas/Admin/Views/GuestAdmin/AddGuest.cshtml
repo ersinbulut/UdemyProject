@@ -1,0 +1,47 @@
+﻿@model CreateGuestDto
+
+@{
+    ViewData["Title"] = "AddGuest";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+<div class="mdl-card mdl-shadow--2dp employer-form" action="#">
+    <div class="mdl-card__title">
+        <h2>Misafir Ekleme Formu</h2>
+        <div class="mdl-card__subtitle">Lütfen formu doldurun</div>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+        <form method="post" class="form">
+            <div class="form__article">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="Name" value="">
+                        <label class="mdl-textfield__label" for="firstName">Misafir Adı</label>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="Surname" value="">
+                        <label class="mdl-textfield__label" for="secondName">Misafir Soyadı</label>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
+                        <input class="mdl-textfield__input" type="text" asp-for="City" value="">
+                        <label class="mdl-textfield__label" for="secondName">Misafir Şehir</label>
+                    </div>
+                </div>
+
+                <div class="form__action" style="float:right;">
+                    <button type="submit" id="submit_button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-upgraded=",MaterialButton">
+                        Ekle
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+

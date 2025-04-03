@@ -23,7 +23,13 @@ namespace HotelProject.DataAccessLayer.Concrete
             {
                 entry.ToTable("Rooms", tb => tb.HasTrigger("RoomsCountTrigger"));
             });
+            builder.Entity<Guest>(entry =>
+            {
+                entry.ToTable("Guests", tb => tb.HasTrigger("GuestsCountTrigger"));
+            });
         }
+
+
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Service> Services { get; set; }
