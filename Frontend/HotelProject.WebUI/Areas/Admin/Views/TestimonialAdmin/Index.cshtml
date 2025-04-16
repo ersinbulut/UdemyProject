@@ -1,41 +1,31 @@
 ﻿@model List<TestimonialViewModel>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
-    <div class="mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__title">
-            <h1 class="mdl-card__title-text">Referans Tablosu</h1>
-        </div>
-        <div class="mdl-card__supporting-text no-padding">
-            <table class="mdl-data-table mdl-js-data-table" data-upgraded=",MaterialDataTable">
-                <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric">#</th>
-                        <th class="mdl-data-table__cell--non-numeric">Referans Görsel</th>
-                        <th class="mdl-data-table__cell--non-numeric">Referans Adı</th>
-                        <th class="mdl-data-table__cell--non-numeric">Referans Ünvanı</th>
-                        <th class="mdl-data-table__cell--non-numeric">Sil</th>
-                        <th class="mdl-data-table__cell--non-numeric">Güncelle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <th class="mdl-data-table__cell--non-numeric">@item.TestimonialID</th>
-                            <td class="mdl-data-table__cell--non-numeric">@item.Name</td>
-                            <td class="mdl-data-table__cell--non-numeric">@item.Title</td>
-                            <td class="mdl-data-table__cell--non-numeric"><a href="/Admin/TestimonialAdmin/DeleteTestimonial/@item.TestimonialID" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-red">Sil</a></td>
-                            <td class="mdl-data-table__cell--non-numeric"><a href="/Admin/TestimonialAdmin/UpdateTestimonial/@item.TestimonialID" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-green">Güncelle</a></td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            <a href="/Admin/TestimonialAdmin/AddTestimonial/" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-purple">Yeni Referans Girişi</a>
-        </div>
-    </div>
-</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Referans Görsel</th>
+        <th>Referans Adı</th>
+        <th>Referans Ünvanı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.TestimonialID</th>
+            <td>@item.Name</td>
+            <td>@item.Title</td>
+            <td><a href="/Admin/TestimonialAdmin/DeleteTestimonial/@item.TestimonialID" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+            <td><a href="/Admin/TestimonialAdmin/UpdateTestimonial/@item.TestimonialID" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+            <td><a href="#" class="btn mb-1 btn-rounded btn-outline-dark">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/Admin/TestimonialAdmin/AddTestimonial" class="btn mb-1 btn-rounded btn-outline-info">Yeni Personel Girişi</a>
 

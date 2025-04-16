@@ -1,59 +1,30 @@
 ﻿@model UpdateAboutDto
+
 @{
     ViewData["Title"] = "UpdateAbout";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-
-<div class="mdl-card mdl-shadow--2dp employer-form" action="#">
-    <div class="mdl-card__title">
-        <h2>Hakkımda Güncelleme Formu</h2>
-    </div>
-
-    <div class="mdl-card__supporting-text">
-        <form method="post" class="form">
-            <input type="hidden" asp-for="AboutID" />
-            <div class="form__article">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
-                        <input class="mdl-textfield__input" type="text" asp-for="Title1">
-                        <label class="mdl-textfield__label" for="firstName">Başlık 1</label>
-                    </div>
-
-                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
-                        <input class="mdl-textfield__input" type="text" asp-for="Title2">
-                        <label class="mdl-textfield__label" for="secondName">Başlık 2</label>
-                    </div>
-                </div>
-
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
-                        <input class="mdl-textfield__input" type="text" asp-for="Content">
-                        <label class="mdl-textfield__label" for="firstName">İçerik </label>
-                    </div>
-
-                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
-                        <input class="mdl-textfield__input" type="text" asp-for="StaffCount">
-                        <label class="mdl-textfield__label" for="secondName">Personel Sayısı </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
-                        <input class="mdl-textfield__input" type="text" asp-for="RoomCount">
-                        <label class="mdl-textfield__label" for="secondName">Oda Sayısı</label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
-                        <input class="mdl-textfield__input" type="text" asp-for="CustomerCount">
-                        <label class="mdl-textfield__label" for="secondName">Müşteri Sayısı</label>
-                    </div>
-                </div>
-                <div class="form__action" style="float:right;">
-                    <button id="submit_button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-upgraded=",MaterialButton">
-                        Güncelle
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-
+<form method="post">
+    <input type="hidden" asp-for="AboutID" />
+    <label>Hakkımızda Başlık 1</label>
+    <input type="text" asp-for="Title1" class="form-control" />
+    <br />
+    <label>Hakkımızda Başlık 2</label>
+    <input type="text" asp-for="Title2" class="form-control" />
+    <br />
+    <label>İçerik</label>
+    <input type="text" asp-for="Content" class="form-control" />
+    <br />
+    <label>Personel Sayısı</label>
+    <input type="text" asp-for="StaffCount" class="form-control" />
+    <br />
+    <label>Oda Sayısı</label>
+    <input type="text" asp-for="RoomCount" class="form-control" />
+    <br />
+    <label>Müşteri Sayısı</label>
+    <input type="text" asp-for="CustomerCount" class="form-control" />
+    <br />
+    <button class="btn btn-outline-success">Hakkımızda Bilgisini Güncelle</button>
+</form>
 

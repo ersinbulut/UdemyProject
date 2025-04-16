@@ -1,37 +1,24 @@
 ﻿@model List<ResultAboutDto>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
-    <div class="mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__title">
-            <h1 class="mdl-card__title-text">Personel Tablosu</h1>
-        </div>
-        <div class="mdl-card__supporting-text no-padding">
-            <table class="mdl-data-table mdl-js-data-table" data-upgraded=",MaterialDataTable">
-                <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric">#</th>
-                        <th class="mdl-data-table__cell--non-numeric">Başlık 1</th>
-                        <th class="mdl-data-table__cell--non-numeric">Başlık 2</th>
-                        <th class="mdl-data-table__cell--non-numeric">Güncelle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <th class="mdl-data-table__cell--non-numeric">@item.AboutID</th>
-                            <td class="mdl-data-table__cell--non-numeric">@item.Title1</td>
-                            <td class="mdl-data-table__cell--non-numeric">@item.Title2</td>
-                            <td class="mdl-data-table__cell--non-numeric"><a href="/Admin/AboutAdmin/UpdateAbout/@item.AboutID" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-green">Güncelle</a></td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık1</th>
+        <th>Başlık2</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.AboutID</th>
+            <td>@item.Title1</td>
+            <td>@item.Title2</td>
+            <td><a href="/Admin/AboutAdmin/UpdateAbout/@item.AboutID" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>

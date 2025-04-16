@@ -1,52 +1,26 @@
 ﻿@model UpdateServiceDto
+
 @{
-    ViewData["Title"] = "UpdateStaff";
+    ViewData["Title"] = "UpdateService";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
 
-<div class="mdl-card mdl-shadow--2dp employer-form" action="#">
-    <div class="mdl-card__title">
-        <h2>Hizmet Güncelleme Formu</h2>
-    </div>
-
-    <div class="mdl-card__supporting-text">
-        <form method="post" class="form">
-            <input type="hidden" asp-for="ServiceID" />
-            <div class="form__article">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
-                        <input class="mdl-textfield__input" type="text" asp-for="ServiceIcon">
-                        <label class="mdl-textfield__label" for="firstName">Hizmet İkonu</label>
-                        <span asp-validation-for="ServiceIcon" class="text-info"></span>
-                    </div>
-
-                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
-                        <input class="mdl-textfield__input" type="text" asp-for="Title">
-                        <label class="mdl-textfield__label" for="secondName">Hizmet Başlığı</label>
-                        <span asp-validation-for="Title" class="text-info"></span>
-                    </div>
-                </div>
-
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded" data-upgraded=",MaterialTextfield">
-                        <input class="mdl-textfield__input" type="text" asp-for="Description">
-                        <label class="mdl-textfield__label" for="firstName">Hizmet Açıklaması</label>
-                        <span asp-validation-for="Description" class="text-info"></span>
-                    </div>
-
-                </div>
-
-                <div class="form__action" style="float:right;">
-                    <button id="submit_button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-upgraded=",MaterialButton">
-                        Güncelle
-                    </button>
-                </div>
-            </div>
-
-        </form>
-    </div>
-</div>
-
+<form method="post">
+    <input type="hidden" asp-for="ServiceID" />
+    <label>Hizmet İkonu</label>
+    <input type="text" asp-for="ServiceIcon" class="form-control" />
+    <span asp-validation-for="ServiceIcon" class="text-info"></span>
+    <br />
+    <label>Hizmet Başlığı</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-info"></span>
+    <br />
+    <label>Açıklama</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-info"></span>
+    <br />
+    <button class="btn btn-primary">Hizmeti Güncelle</button>
+</form>
 
 

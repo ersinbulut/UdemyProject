@@ -3,21 +3,24 @@ using HotelProject.WebUI.Dtos.GuestDto;
 
 namespace HotelProject.WebUI.ValidationRules.GuestValidationRules
 {
-    public class CreateGuestValidator:AbstractValidator<CreateGuestDto>
+    public class CreateGuestValidator : AbstractValidator<CreateGuestDto>
     {
         public CreateGuestValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().WithMessage("İsim Alanı boş geçilemez");
-            RuleFor(x => x.Surname).NotEmpty().WithMessage("Soyisim Alanı boş geçilemez");
-            RuleFor(x => x.City).NotEmpty().WithMessage("Şehir Alanı boş geçilemez");
-            RuleFor(x => x.Name).MinimumLength(3).WithMessage("Lütfen en az 3 karakter veri girişi yapınız.");
-            RuleFor(x => x.Surname).MinimumLength(2).WithMessage("Lütfen en az 2 karakter veri girişi yapınız.");
-            RuleFor(x => x.City).MinimumLength(3).WithMessage("Lütfen en az 3 karakter veri girişi yapınız.");
-            RuleFor(x => x.Name).MaximumLength(20).WithMessage("Lütfen en fazla 20 karakter veri girişi yapınız.");
-            RuleFor(x => x.Surname).MaximumLength(30).WithMessage("Lütfen en fazla 30 karakter veri girişi yapınız.");
-            RuleFor(x => x.City).MaximumLength(20).WithMessage("Lütfen en fazla 20 karakter veri girişi yapınız.");
+            RuleFor(x => x.Name)
+                .NotEmpty().WithMessage("Misafir adı boş geçilemez")
+                .MinimumLength(3).WithMessage("Misafir adı en az 3 karakter olmalıdır")
+                .MaximumLength(20).WithMessage("Misafir adı en fazla 20 karakter olabilir");
 
+            RuleFor(x => x.Surname)
+                .NotEmpty().WithMessage("Misafir soyadı boş geçilemez")
+                .MinimumLength(2).WithMessage("Misafir soyadı en az 2 karakter olmalıdır")
+                .MaximumLength(30).WithMessage("Misafir soyadı en fazla 30 karakter olabilir");
 
+            RuleFor(x => x.City)
+                .NotEmpty().WithMessage("Şehir alanı boş geçilemez")
+                .MinimumLength(3).WithMessage("Şehir adı en az 3 karakter olmalıdır")
+                .MaximumLength(20).WithMessage("Şehir adı en fazla 20 karakter olabilir");
         }
     }
 }

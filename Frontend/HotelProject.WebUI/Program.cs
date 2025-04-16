@@ -1,18 +1,32 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.EntityLayer.Concrete;
+using HotelProject.WebUI.Dtos.GuestDto;
+using HotelProject.WebUI.ValidationRules.GuestValidationRules;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-
 ///////////////
 builder.Services.AddHttpClient();
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
 
+// FluentValidation yapılandırması
+ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
+builder.Services.AddControllersWithViews()
+    .AddFluentValidation(fv => 
+    {
+        fv.RegisterValidatorsFromAssemblyContaining<Program>();
+        fv.DisableDataAnnotationsValidation = true;
+        fv.AutomaticValidationEnabled = true;
+    });
+
+builder.Services.AddTransient<IValidator<CreateGuestDto>, CreateGuestValidator>();
+builder.Services.AddTransient<IValidator<UpdateGuestDto>, UpdateGuestValidator>();
 
 //////automapper/////
 builder.Services.AddAutoMapper(typeof(Program));

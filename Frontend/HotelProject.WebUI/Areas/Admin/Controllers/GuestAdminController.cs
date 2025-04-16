@@ -1,8 +1,12 @@
-﻿using HotelProject.WebUI.Models.Staff;
-using System.Text;
+﻿using HotelProject.WebUI.Dtos.GuestDto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using HotelProject.WebUI.Dtos.GuestDto;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelProject.WebUI.Areas.Admin.Controllers
 {
@@ -34,18 +38,35 @@ namespace HotelProject.WebUI.Areas.Admin.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public async Task<IActionResult> AddGuest(CreateGuestDto model)
+        public async Task<IActionResult> AddGuest(CreateGuestDto createGuestDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(model);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("http://localhost:5244/api/Guest", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                return View(createGuestDto);
             }
-            return View();
+
+            try
+            {
+                var client = _httpClientFactory.CreateClient();
+                var jsonData = JsonConvert.SerializeObject(createGuestDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage = await client.PostAsync("http://localhost:5244/api/Guest", stringContent);
+                
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                
+                ModelState.AddModelError("", "Misafir eklenirken bir hata oluştu.");
+                return View(createGuestDto);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Bir hata oluştu: " + ex.Message);
+                return View(createGuestDto);
+            }
         }
 
         public async Task<IActionResult> DeleteGuest(int id)
