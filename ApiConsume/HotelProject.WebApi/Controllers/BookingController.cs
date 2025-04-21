@@ -2,6 +2,10 @@
 using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HotelProject.WebApi.Controllers
 {
@@ -10,7 +14,6 @@ namespace HotelProject.WebApi.Controllers
     public class BookingController : ControllerBase
     {
         private readonly IBookingService _bookingService;
-
         public BookingController(IBookingService bookingService)
         {
             _bookingService = bookingService;
@@ -22,14 +25,12 @@ namespace HotelProject.WebApi.Controllers
             var values = _bookingService.TGetList();
             return Ok(values);
         }
-
         [HttpPost]
         public IActionResult AddBooking(Booking booking)
         {
             _bookingService.TInsert(booking);
             return Ok();
         }
-
         [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)
         {
@@ -37,14 +38,12 @@ namespace HotelProject.WebApi.Controllers
             _bookingService.TDelete(values);
             return Ok();
         }
-
         [HttpPut("UpdateBooking")]
         public IActionResult UpdateBooking(Booking booking)
         {
             _bookingService.TUpdate(booking);
             return Ok();
         }
-
         [HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
@@ -52,18 +51,31 @@ namespace HotelProject.WebApi.Controllers
             return Ok(values);
         }
 
-        [HttpPut("aaaa")]
-        public IActionResult aaaa(Booking booking)
+        [HttpGet("Last6Booking")]
+        public IActionResult Last6Booking()
         {
-            _bookingService.TBookingStatusChangeApproved(booking);
-            return Ok("Güncelleme işlemi başarılı");
+            var values = _bookingService.TLast6Bookings();
+            return Ok(values);
         }
 
-        [HttpPut("bbbb")]
-        public IActionResult bbbb(int id)
+        [HttpGet("BookingAproved")]
+        public IActionResult BookingAproved(int id)
         {
-            _bookingService.TBookingStatusChangeApproved2(id);
-            return Ok("Güncelleme işlemi başarılı");
+            _bookingService.TBookingStatusChangeApproved3(id);
+            return Ok();
+        }
+
+        [HttpGet("BookingCancel")]
+        public IActionResult BookingCancel(int id)
+        {
+            _bookingService.TBookingStatusChangeCancel(id);
+            return Ok();
+        }
+        [HttpGet("BookingWait")]
+        public IActionResult BookingWait(int id)
+        {
+            _bookingService.TBookingStatusChangeWait(id);
+            return Ok();
         }
     }
 }

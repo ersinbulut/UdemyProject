@@ -2,6 +2,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using HotelProject.WebUI.Dtos.StaffDto;
 
 namespace HotelProject.WebUI.Areas.Admin.Controllers
 {
@@ -22,7 +23,7 @@ namespace HotelProject.WebUI.Areas.Admin.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<StaffViewModel>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultStaffDto>>(jsonData);
                 return View(values);
             }
             return View();
