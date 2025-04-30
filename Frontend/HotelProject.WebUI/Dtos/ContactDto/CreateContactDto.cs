@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HotelProject.EntityLayer.Concrete;
 
 namespace HotelProject.WebUI.Dtos.ContactDto
 {
@@ -13,5 +14,6 @@ namespace HotelProject.WebUI.Dtos.ContactDto
         public string Message { get; set; }
         public DateTime Date { get; set; }
         public int MessageCategoryID { get; set; }
+        public MessageCategory MessageCategory { get; set; }
     }
 }
