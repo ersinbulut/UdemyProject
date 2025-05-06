@@ -28,7 +28,7 @@ namespace HotelProject.WebUI.Controllers
                 var result = await _signInManager.PasswordSignInAsync(loginUserDto.Username, loginUserDto.Password,false,false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "TestimonialAdmin", new {area="Admin"});
+                    return RedirectToAction("Index", "AdminDashboard", new {area="Admin"});
                 }
                 else
                 {
