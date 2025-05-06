@@ -26,16 +26,38 @@
 							<td><img src="@item.ImageUrl" class=" rounded-circle mr-3" alt="">@item.Name @item.Surname</td>
 							<td>@item.City</td>
 							<td>
-								<span>Türkiye</span>
+								<span>@item.Country</span>
 							</td>
-							<td>
-								<div>
-									<div class="progress" style="height: 6px">
-										<div class="progress-bar bg-success" style="width: 50%"></div>
+							@if (item.Gender == "Erkek")
+							{
+								<td>
+									<div>
+										<div class="progress" style="height: 6px">
+											<div class="progress-bar bg-success" style="width: 90%"></div>
+										</div>
 									</div>
-								</div>
-							</td>
-							<td><i class="fa fa-circle-o text-success  mr-2"></i> Erkek</td>
+								</td>
+							}
+							@if (item.Gender == "Kadın")
+							{
+								<td>
+									<div>
+										<div class="progress" style="height: 6px">
+											<div class="progress-bar bg-warning" style="width: 90%"></div>
+										</div>
+									</div>
+								</td>
+							}
+
+							@if (item.Gender == "Erkek")
+							{
+								<td><i class="fa fa-circle-o text-success  mr-2"></i> @item.Gender</td>
+							}
+							@if (item.Gender == "Kadın")
+							{
+								<td><i class="fa fa-circle-o text-warning  mr-2"></i> @item.Gender</td>
+							}
+
 						</tr>
 					}
 				</tbody>
