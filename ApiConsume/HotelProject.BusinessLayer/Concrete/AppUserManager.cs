@@ -18,6 +18,11 @@ namespace HotelProject.BusinessLayer.Concrete
             _appUserDal = appUserDal;
         }
 
+        public int TAppUserCount()
+        {
+            return _appUserDal.AppUserCount();
+        }
+
         public void TDelete(AppUser t)
         {
             throw new NotImplementedException();
@@ -45,12 +50,12 @@ namespace HotelProject.BusinessLayer.Concrete
 
         public List<AppUser> TUserListWithWorkLocation()
         {
-          return _appUserDal.UserListWithWorkLocation();
+            return _appUserDal.UserListWithWorkLocation();
         }
 
         public List<AppUser> TUsersListWithWorkLocations()
         {
-           return _appUserDal.UsersListWithWorkLocations();
+            return _appUserDal.UsersListWithWorkLocations();
         }
     }
 }
