@@ -10,12 +10,10 @@
 						<table class="table table-xs mb-0">
 							<thead>
 								<tr>
-									<th>Customers</th>
-									<th>Product</th>
-									<th>Country</th>
-									<th>Status</th>
-									<th>Payment Method</th>
-									<th>Activity</th>
+									<th>Müşteri</th>
+									<th>Şehir</th>
+									<th>Ülke</th>
+									<th>Durum</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -23,22 +21,55 @@
 								{
 									<tr>
 										<td>@item.Name</td>
-										<td>Şehir</td>
+										<td>@item.City</td>
 										<td>
-											<span>Ülke</span>
+											<span>@item.Country</span>
 										</td>
-										<td>
-											<div>
-												<div class="progress" style="height: 6px">
-													<div class="progress-bar bg-success" style="width: 50%"></div>
+										@if (item.Status =="Onaylandı")
+										{
+											<td>
+												<div>
+													<div class="progress" style="height: 6px">
+														<div class="progress-bar bg-success" style="width: 100%"></div>
+													</div>
 												</div>
-											</div>
-										</td>
-										<td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-										<td>
-											<span>Last Login</span>
-											<span class="m-0 pl-3">10 sec ago</span>
-										</td>
+											</td>
+											<td><i class="fa fa-circle-o text-success  mr-2"></i> @item.Status</td>
+										}
+										@if (item.Status == "Müşteri Aranacak")
+										{
+											<td>
+												<div>
+													<div class="progress" style="height: 6px">
+														<div class="progress-bar bg-warning" style="width: 100%"></div>
+													</div>
+												</div>
+											</td>
+											<td><i class="fa fa-circle-o text-warning  mr-2"></i> @item.Status</td>
+										}
+										@if (item.Status == "İptal Edildi")
+										{
+											<td>
+												<div>
+													<div class="progress" style="height: 6px">
+														<div class="progress-bar bg-danger" style="width: 100%"></div>
+													</div>
+												</div>
+											</td>
+											<td><i class="fa fa-circle-o text-danger  mr-2"></i> @item.Status</td>
+										}
+										@if (item.Status == "Onay Bekliyor")
+										{
+											<td>
+												<div>
+													<div class="progress" style="height: 6px">
+														<div class="progress-bar bg-info" style="width: 100%"></div>
+													</div>
+												</div>
+											</td>
+											<td><i class="fa fa-circle-o text-info  mr-2"></i> @item.Status</td>
+										}
+									
 									</tr>
 								}
 							</tbody>
