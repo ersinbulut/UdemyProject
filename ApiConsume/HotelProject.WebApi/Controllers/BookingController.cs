@@ -28,6 +28,10 @@ namespace HotelProject.WebApi.Controllers
         [HttpPost]
         public IActionResult AddBooking(Booking booking)
         {
+            booking.City = "İstanbul";
+            booking.Country = "Türkiye";
+            booking.Status = "Onay bekliyor";
+            booking.Description = "";
             _bookingService.TInsert(booking);
             return Ok();
         }
